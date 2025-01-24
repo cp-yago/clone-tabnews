@@ -1,9 +1,8 @@
-import database from "infra/database";
 import oschestrator from "tests/oschestrator";
 
 beforeAll(async () => {
   await oschestrator.waitForAllServices();
-  await database.query("drop schema public cascade; create schema public;");
+  await oschestrator.clearDatabase();
 });
 
 describe("GET /api/v1/migrations", () => {
